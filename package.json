@@ -1,0 +1,24 @@
+{
+  "name": "photo-sort",
+  "version": "1.0.0",
+  "description": "Keyboard-driven photo triage tool",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.jedapps.photo-sort",
+    "productName": "PhotoSort",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>PhotoSort</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active">
+    <div class="start-card">
+      <div class="logo">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="14" fill="#1a1a2e"/>
+          <rect x="10" y="14" width="36" height="28" rx="3" stroke="#6c63ff" stroke-width="2"/>
+          <circle cx="22" cy="26" r="4" stroke="#6c63ff" stroke-width="2"/>
+          <path d="M10 36 L20 28 L28 34 L36 24 L46 34 V42H10V36Z" fill="#6c63ff" opacity="0.4"/>
+        </svg>
+      </div>
+      <h1>PhotoSort</h1>
+      <p class="subtitle">Keyboard-driven photo triage</p>
+      <button id="open-folder-btn" class="btn-primary">Open Folder</button>
+      <div class="shortcut-hint">
+        <span class="key">A</span> delete &nbsp;·&nbsp; <span class="key">D</span> keep &nbsp;·&nbsp; <span class="key">Z</span> undo
+      </div>
+    </div>
+  </div>
+
+  <!-- SORT SCREEN -->
+  <div id="sort-screen" class="screen">
+    <!-- Custom title bar -->
+    <div id="titlebar">
+      <div id="file-info">
+        <span id="filename"></span>
+        <span id="filesize"></span>
+      </div>
+      <div id="titlebar-controls">
+        <button id="btn-min" title="Minimize">&#x2212;</button>
+        <button id="btn-max" title="Maximize">&#x25A1;</button>
+        <button id="btn-close" title="Close">&#x2715;</button>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div id="progress-bar-wrap">
+      <div id="progress-bar-fill"></div>
+    </div>
+
+    <!-- Main image area -->
+    <div id="image-wrap">
+      <img id="main-img" src="" alt="" draggable="false" />
+      <div id="delete-badge">MARKED FOR DELETION</div>
+    </div>
+
+    <!-- Bottom HUD -->
+    <div id="hud">
+      <button id="btn-prev" class="hud-btn" title="Previous (←)">&#x2190;</button>
+
+      <div id="hud-center">
+        <span id="progress-text"></span>
+        <div id="hud-actions">
+          <button id="btn-delete" class="action-btn delete-btn" title="Mark delete (A)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            Delete
+          </button>
+          <button id="btn-undo" class="action-btn" title="Undo (Z)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+            Undo
+          </button>
+          <button id="btn-keep" class="action-btn keep-btn" title="Keep (D)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Keep
+          </button>
+        </div>
+      </div>
+
+      <button id="btn-next" class="hud-btn" title="Next (→)">&#x2192;</button>
+    </div>
+  </div>
+
+  <!-- FINISH SCREEN -->
+  <div id="finish-screen" class="screen">
+    <div class="finish-card">
+      <div class="finish-icon">&#x2713;</div>
+      <h2>Triage complete</h2>
+      <div class="stats">
+        <div class="stat"><span id="stat-total">0</span><label>Total</label></div>
+        <div class="stat delete"><span id="stat-delete">0</span><label>To Delete</label></div>
+        <div class="stat keep"><span id="stat-keep">0</span><label>Kept</label></div>
+      </div>
+      <div id="script-box">
+        <pre id="script-preview"></pre>
+      </div>
+      <div class="finish-actions">
+        <button id="btn-copy-script" class="btn-secondary">Copy Script</button>
+        <button id="btn-save-script" class="btn-secondary">Save Script…</button>
+        <button id="btn-new-session" class="btn-primary">New Session</button>
+      </div>
+      <div id="copy-confirm" class="hidden">Copied to clipboard!</div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
