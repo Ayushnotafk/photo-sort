@@ -194,17 +194,25 @@ btnUndo.addEventListener('click', undo);
 btnPrev.addEventListener('click', () => advance(-1));
 btnNext.addEventListener('click', () => advance(1));
 
+let lastKeyAction = 0;
+const KEY_REPEAT_MS = 80; // minimum ms between repeat fires
+
 document.addEventListener('keydown', (e) => {
   if (!sortScreen.classList.contains('active')) return;
-  if (e.repeat) return;
+  const now = Date.now();
   switch (e.key) {
     case 'ArrowLeft':
     case 'a': case 'A':
+      if (e.repeat && now - lastKeyAction < KEY_REPEAT_MS) return;
+      lastKeyAction = now;
       markDelete(); break;
     case 'ArrowRight':
     case 'd': case 'D':
+      if (e.repeat && now - lastKeyAction < KEY_REPEAT_MS) return;
+      lastKeyAction = now;
       markKeep(); break;
     case 'z': case 'Z':
+      if (e.repeat) return; // undo stays single-fire
       undo(); break;
   }
 });
