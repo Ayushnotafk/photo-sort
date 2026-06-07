@@ -3,15 +3,44 @@
   "version": "1.0.0",
   "description": "Keyboard-driven photo triage tool",
   "main": "src/main.js",
+  "author": "Jed",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build":        "node scripts/build.js",
+    "build:win":    "node scripts/build.js --win",
+    "build:mac":    "node scripts/build.js --mac",
+    "build:linux":  "node scripts/build.js --linux"
   },
   "build": {
     "appId": "com.jedapps.photo-sort",
     "productName": "PhotoSort",
+    "copyright": "Copyright © 2026 Jed",
+    "files": [
+      "src/**/*"
+    ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "build/icon.ico",
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "PhotoSort",
+      "deleteAppDataOnUninstall": false
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png",
+      "category": "public.app-category.photography"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png",
+      "category": "Graphics"
     },
     "directories": {
       "output": "dist"

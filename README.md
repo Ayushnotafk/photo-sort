@@ -53,6 +53,16 @@ npm start
 
 Requires [Node.js](https://nodejs.org) (LTS).
 
+## Building an installer
+
+```bash
+npm run build:win    # Windows NSIS installer → dist/
+npm run build:mac    # macOS DMG (run on macOS)
+npm run build:linux  # Linux AppImage → dist/
+```
+
+The icon is generated automatically before each build - no extra tools needed.
+
 ## Tech
 
 Built with [Electron](https://www.electronjs.org/). No framework, no bundler - plain HTML/CSS/JS in the renderer.
