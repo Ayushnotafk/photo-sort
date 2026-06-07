@@ -1,5 +1,11 @@
 name: Release
 
+# Triggered when you push a v* tag.
+# You should create a DRAFT release on GitHub first (with your description,
+# changelog, etc.), then push the tag. This workflow builds the binaries on
+# each platform's native runner and uploads them to your existing draft.
+# Publish the release manually once all three uploads are done.
+
 on:
   push:
     tags:
@@ -47,3 +53,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ matrix.artifact }}
+          # Don't create a new release - upload to the draft you created first.
+          # If no draft exists this will still create one, but ideally you've
+          # already created the release on GitHub before pushing the tag.
