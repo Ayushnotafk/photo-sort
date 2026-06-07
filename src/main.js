@@ -38,7 +38,6 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
     },
-    titleBarStyle: 'hidden',
     frame: false,
   });
 
@@ -89,10 +88,13 @@ app.whenReady().then(() => {
   });
 
   ipcMain.handle('save-script', async (_, script) => {
+    const isWin = process.platform === 'win32';
     const result = await dialog.showSaveDialog(win, {
       title: 'Save delete script',
-      defaultPath: path.join(os.homedir(), 'delete-photos.sh'),
-      filters: [{ name: 'Shell Script', extensions: ['sh'] }],
+      defaultPath: path.join(os.homedir(), isWin ? 'delete-photos.bat' : 'delete-photos.sh'),
+      filters: isWin
+        ? [{ name: 'Batch Script', extensions: ['bat'] }]
+        : [{ name: 'Shell Script', extensions: ['sh'] }],
     });
     if (result.canceled) return false;
     fs.writeFileSync(result.filePath, script, 'utf8');
