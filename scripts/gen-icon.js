@@ -5,7 +5,8 @@
  * Pure Node.js, no external dependencies.
  *
  * Design: the PhotoSort camera logo (matching the SVG in index.html)
- * rendered at 256×256, saved as both PNG and a modern PNG-in-ICO file.
+ * rendered at 512×512, saved as both PNG and a modern PNG-in-ICO file.
+ * 512px satisfies macOS icns requirements; the ICO wraps the same PNG.
  */
 
 const zlib = require('node:zlib');
@@ -14,7 +15,7 @@ const path = require('node:path');
 
 // ── Pixel buffer ──────────────────────────────────────────────────────────────
 
-const SIZE = 256;
+const SIZE = 512;
 const buf  = Buffer.alloc(SIZE * SIZE * 4, 0); // RGBA, fully transparent
 
 function setPixel(x, y, r, g, b, a = 255) {
