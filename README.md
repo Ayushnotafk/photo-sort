@@ -45,7 +45,17 @@ Hold `A` or `D` to rapid-fire through photos.
 
 `jpg` `jpeg` `png` `gif` `webp` `bmp` `tiff` `heic` `avif`
 
-## Getting started
+## Download
+
+Grab the latest installer from the [Releases page](https://github.com/jedbillyb/photo-sort/releases/latest) - no Node.js or build steps needed.
+
+| Platform | File |
+|----------|------|
+| Windows | `PhotoSort.Setup.x.x.x.exe` |
+| macOS (Apple Silicon) | `PhotoSort-x.x.x-arm64.dmg` |
+| Linux | `PhotoSort-x.x.x.AppImage` |
+
+## Running from source
 
 ```bash
 git clone https://github.com/jedbillyb/photo-sort
