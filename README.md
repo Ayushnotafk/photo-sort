@@ -2,6 +2,9 @@
 
 Keyboard-driven photo triage - blaze through thousands of photos and generate a clean delete script.
 
+![PhotoSort start screen](assets/screenshot-start.png)
+![PhotoSort sorting](assets/screenshot-sorting.png)
+
 ## Why
 
 When you have 10,000 photos and just want to kill the blurry ones fast, clicking through a GUI is painful. PhotoSort keeps your hands on the keyboard - one key per decision, zero friction.
