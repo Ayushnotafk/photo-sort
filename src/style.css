@@ -279,6 +279,18 @@ h1 {
 }
 .action-btn:active { transform: scale(.96); }
 
+.action-btn kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: .78rem;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
 .delete-btn { border-color: rgba(224,82,82,.35); }
 .delete-btn:hover { background: rgba(224,82,82,.18); border-color: var(--delete); color: var(--delete); }
 
@@ -308,6 +320,18 @@ h1 {
   box-shadow: 0 32px 80px rgba(0,0,0,.6);
   max-width: 640px;
   width: 90vw;
+}
+
+.finish-note {
+  font-size: .82rem;
+  color: var(--muted);
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.5;
+  border: 1px solid rgba(108,99,255,.25);
+  background: rgba(108,99,255,.08);
+  padding: 10px 16px;
+  border-radius: 8px;
 }
 
 .finish-icon {
