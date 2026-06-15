@@ -89,7 +89,7 @@ function strokeCircle(cx, cy, radius, sw, r, g, b, a = 255) {
 // ── Icon geometry ─────────────────────────────────────────────────────────────
 // The source SVG is 56×56.  We render into a 256×256 canvas with 16px padding.
 
-const PAD   = 16;
+const PAD   = 8;
 const INNER = SIZE - PAD * 2; // 224px
 
 // Map SVG coordinate → canvas pixel
@@ -103,7 +103,7 @@ const [AR, AG, AB] = [0x7c, 0x6d, 0xfa];
 const [BR, BG, BB] = [0x1a, 0x1a, 0x2e];
 
 // 1. Rounded square background
-fillRRect(PAD, PAD, INNER, INNER, 48, BR, BG, BB);
+// fillRRect(PAD, PAD, INNER, INNER, 48, BR, BG, BB);
 
 // 2. Camera body – stroke effect: fill accent outer, then bg inner
 const CAM_SW = d(2);
